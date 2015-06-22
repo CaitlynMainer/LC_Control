@@ -156,6 +156,8 @@ if (compareVersions(remoteVersion(), localVersion()) == 0) then
 end
 --We've checked for gml, and downloaded it if it was available, so we can load gml now.
 
+shell.execute("wget -f https://raw.githubusercontent.com/CaitlynMainer/StargateList/master/Gates.txt GateInfo.txt")
+
 local gml=require("gml")
 
 local sg = component.stargate
