@@ -50,11 +50,11 @@ function compareVersions(v1,v2)
     end
     wget = loadfile("/bin/wget.lua")
     function downloadFile(remotename, filename)
-        wget("https://raw.github.com/OpenPrograms/Kenny-Programs/master/LC_Control/" .. remotename, filename)
+        wget("https://raw.githubusercontent.com/CaitlynMainer/LC_Control/master/" .. remotename, filename)
     end
 
     function remoteVersion()
-        for line in internet.request("https://raw.github.com/OpenPrograms/Kenny-Programs/master/LC_Control/stargate-version.txt") do 
+        for line in internet.request("https://raw.githubusercontent.com/CaitlynMainer/LC_Control/master/stargate-version.txt") do 
             if line ~= "not found" then 
                 return text.trim(line)
             else 
