@@ -185,14 +185,17 @@ end
 function loadAddressData()
   destName = {}
   destAddress = {}
+  local thisAddress = sg.getAddress()
     do
         local f = io.open(filename)
         if f then
             for line in f:lines() do
                 line = text.trim(line)
                 delimPos = strripos(line, ",")
-                table.insert(destName, string.sub(line, 1, delimPos - 1))
-                table.insert(destAddress, string.sub(line, delimPos + 1, string.len(line)))
+                if thisAddress ~= string.sub(line, delimPos + 1, string.len(line)) then
+                    table.insert(destName, string.sub(line, 1, delimPos - 1))
+                    table.insert(destAddress, string.sub(line, delimPos + 1, string.len(line)))
+                end
             end
             f:close()
         end
