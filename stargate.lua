@@ -54,7 +54,7 @@ function compareVersions(v1,v2)
 	end
 
 	function remoteVersion()
-		for line in internet.request("https://raw.github.com/CaitlynMainer/LC_Control/master/LC_Control/stargate-version.txt") do 
+		for line in internet.request("https://raw.github.com/CaitlynMainer/LC_Control/master/stargate-version.txt") do 
 			if line ~= "not found" then 
 				return text.trim(line)
 			else 
