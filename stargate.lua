@@ -50,7 +50,7 @@ function compareVersions(v1,v2)
 	end
 	wget = loadfile("/bin/wget.lua")
 	function downloadFile(remotename, filename)
-		wget("https://raw.github.com/CaitlynMainer/LC_Control/master/LC_Control/" .. remotename, filename)
+		wget("https://raw.github.com/CaitlynMainer/LC_Control/master/" .. remotename, filename)
 	end
 
 	function remoteVersion()
