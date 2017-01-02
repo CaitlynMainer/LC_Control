@@ -64,10 +64,10 @@ function compareVersions(v1,v2)
 	end
 
 	function localVersion()
-		if not file_check(os.getenv("PWD") .. "stargate-version.txt") then
+		if not file_check(os.getenv("PWD") .. "/stargate-version.txt") then
 			return 0
 		else
-			local f = io.open(os.getenv("PWD") .. "stargate-version.txt", "rb")
+			local f = io.open(os.getenv("PWD") .. "/stargate-version.txt", "rb")
 			local content = f:read("*all")
 			f:close()
 			return content
@@ -81,16 +81,16 @@ function compareVersions(v1,v2)
 				doTehUpdate = io.read()
 				if doTehUpdate == "yes" then
 					print("Cleaning up previous install")
-					fs.remove(os.getenv("PWD") .. "default.gss")
-					fs.remove(os.getenv("PWD") .. "cv.gss")
-					fs.remove(os.getenv("PWD") .. "gml.lua")
-					fs.remove(os.getenv("PWD") .. "gfxbuffer.lua")
-					fs.remove(os.getenv("PWD") .. "colorutils.lua")
-					fs.remove(os.getenv("PWD") .. "colorutils.lua")
-					fs.remove(os.getenv("PWD") .. "stargate-version.txt")
+					fs.remove(os.getenv("PWD") .. "/default.gss")
+					fs.remove(os.getenv("PWD") .. "/cv.gss")
+					fs.remove(os.getenv("PWD") .. "/gml.lua")
+					fs.remove(os.getenv("PWD") .. "/gfxbuffer.lua")
+					fs.remove(os.getenv("PWD") .. "/colorutils.lua")
+					fs.remove(os.getenv("PWD") .. "/colorutils.lua")
+					fs.remove(os.getenv("PWD") .. "/stargate-version.txt")
 					currFile = process.running()
 					fs.remove(currFile)
-					if not file_check(os.getenv("PWD") .. currFile) then 
+					if not file_check(os.getenv("PWD") .. "/" .. currFile) then 
 						print("Downloading stargate.lua")
 						downloadFile("stargate.lua", currFile)
 					end
@@ -99,32 +99,32 @@ function compareVersions(v1,v2)
 				end
 			end
 			print("Downloading latest versions of required files")
-			if not file_check(os.getenv("PWD") .. "default.gss") then 
+			if not file_check(os.getenv("PWD") .. "/default.gss") then 
 				print("Downloading default.gss")
 				downloadFile("default.gss","default.gss")
 				downloaded = true
 			end
-			if not file_check(os.getenv("PWD") .. "cv.gss") then 
+			if not file_check(os.getenv("PWD") .. "/cv.gss") then 
 				print("Downloading cv.gss")
 				downloadFile("cv.gss","cv.gss")
 				downloaded = true
 			end
-			if not file_check(os.getenv("PWD") .. "gml.lua") then 
+			if not file_check(os.getenv("PWD") .. "/gml.lua") then 
 				print("Downloading gml.lua")
 				downloadFile("gml.lua","gml.lua")
 				downloaded = true
 			end
-			if not file_check(os.getenv("PWD") .. "gfxbuffer.lua") then 
+			if not file_check(os.getenv("PWD") .. "/gfxbuffer.lua") then 
 				print("Downloading gfxbuffer.lua")
 				downloadFile("gfxbuffer.lua","gfxbuffer.lua")
 				downloaded = true
 			end
-			if not file_check(os.getenv("PWD") .. "colorutils.lua") then 
+			if not file_check(os.getenv("PWD") .. "/colorutils.lua") then 
 				print("Downloading colorutils.lua")
 				downloadFile("colorutils.lua","colorutils.lua")
 				downloaded = true
 			end
-			if not file_check(os.getenv("PWD") .. "stargate-version.txt") then 
+			if not file_check(os.getenv("PWD") .. "/stargate-version.txt") then 
 				print("Downloading stargate-version.txt")
 				downloadFile("stargate-version.txt","stargate-version.txt")
 			end
@@ -135,14 +135,14 @@ function compareVersions(v1,v2)
 		end
 
 		if not component.isAvailable("internet") then 
-			if not file_check(os.getenv("PWD") .. "gml.lua") or not file_check(os.getenv("PWD") .. "cv.gss") or not file_check(os.getenv("PWD") .. "default.gss") or not file_check(os.getenv("PWD") .. "gfxbuffer.lua") or not file_check(os.getenv("PWD") .. "colorutils.lua") or not file_check(os.getenv("PWD") .. "GateInfo.txt") then
+			if not file_check(os.getenv("PWD") .. "/gml.lua") or not file_check(os.getenv("PWD") .. "/cv.gss") or not file_check(os.getenv("PWD") .. "/default.gss") or not file_check(os.getenv("PWD") .. "/gfxbuffer.lua") or not file_check(os.getenv("PWD") .. "/colorutils.lua") or not file_check(os.getenv("PWD") .. "/GateInfo.txt") then
 				io.stderr:write("You are missing one or more of the required files 'gml.lua', 'colorutils.lua', 'gfxbuffer.lua', 'default.gss', or 'cv.gss' and do not have internet access to download them automaticly!\n")
 				return
 			end
 		else
 --We load the internet API here so we don't die on computers without internet cards.
 internet = require("internet")
-if not file_check(os.getenv("PWD") .. "stargate-version.txt") then 
+if not file_check(os.getenv("PWD") .. "/stargate-version.txt") then 
 	print("Setting up version cache")
 	downloadFile("stargate-version.txt","stargate-version.txt")
 end
